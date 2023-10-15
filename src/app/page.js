@@ -1,24 +1,12 @@
-'use client'
-import { useEffect, useState, useRef } from 'react';
-import Image from 'next/image';
-import { motion } from 'framer-motion'
+import { Header } from "@/components/header";
+import { Content } from "@/components/Content";
+import { Footer } from "@/components/footer";
+
 export default function Home() {
-  const [scrollPosition, setScrollPosition] = useState(0);
+
   const containerHeight = 72; // Adjust this value based on your container height
 
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      setScrollPosition(scrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
 
 
 
