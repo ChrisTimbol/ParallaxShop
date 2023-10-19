@@ -1,9 +1,9 @@
 export const Specials = () => {
     return (
         <>
-            <section className="Specials min-h-screen flex   justify-center bg-green-500  text-white">
+            <section className="Specials  flex   justify-center bg-green-500  text-white">
                 <div className="max-w-screen-lg ">
-                    <h2 className="text-3xl p-4 text-center ">Special Deals</h2>
+                    <h2 className="text-4xl font-bold p-4 text-center ">Special Deals</h2>
 
                     <div className="flex  justify-center items-center w-full">
 

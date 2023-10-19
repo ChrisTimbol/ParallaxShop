@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export const BannerSpecial = () => {
     return (
-        <div className="w-full h-48 flex flex-col justify-center items-center bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 text-white p-6">
+        <div className="w-full h-72 flex flex-col justify-center items-center bg-gradient-to-r from-amber-500 via-amber-500 to-amber-600 text-white p-6">
             <h3 className="text-4xl font-bold mb-2">
                 Get 30% Off all dishes!
             </h3>

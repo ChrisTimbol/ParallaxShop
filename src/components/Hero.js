@@ -10,9 +10,9 @@ export const Hero = () => {
                         <Image
                             src="/heroback.jpg"
                             alt="Background Image of burritoes"
-                            layout="fill"
+                            fill
                             priority
-                            objectFit="cover"
+                            className="object-cover"
                             quality={100}
                         />
                     </div>

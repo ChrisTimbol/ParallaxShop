@@ -14,8 +14,9 @@ export const Content = () => {
             <Story />
             {/*             <div className="text-center border-2  border-cyan-500">Insert Image</div>
  */}
-            <Specials />
             <BannerSpecial />
+
+            <Specials />
 
             <Menu />
 

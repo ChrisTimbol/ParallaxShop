@@ -16,8 +16,8 @@ export default function Home() {
 
         <Content />
       
-{/*         <Footer />
- */}   
+        <Footer />
+   
     </>
   );
 }
