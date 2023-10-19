@@ -1,9 +1,8 @@
-import 'next/link'
+import Link from 'next/link'
 import Image from 'next/image'
 export const Header = () => {
   return (
-    <header className="  flex justify-between items-center bg-[url('/img/hero-pattern.svg')] text-white  w-full p-4 fixed">
-      {/* When You scroll make navbar fixed and "high and tight" */}
+    <header className="z-10  flex justify-between bg-amber-500 items-center text-white  w-full p-4 absolute">
 
         
         <div className="text-2xl font-bold ">
@@ -14,20 +13,28 @@ export const Header = () => {
           <div>Burrito Shop</div>
         </div>
         
-        <nav className="flex">
-          <ul className="list-none flex space-x-4 text-lg font-bold">
-            <li className="">
+        <nav className="flex ">
+          <ul className="list-none flex space-x-4 text-lg font-bold ">
+            <Link href="/menu" className="hover:text-black">
+            <li className="hover:text-black">
               Menu
             </li>
-            <li className="">
-              About
+            </Link>
+            <Link href="/story">
+            <li className="hover:text-black">
+              Story
             </li>
-            <li className="">
+            </Link>
+            <Link href="/menu">
+            <li className="hover:text-black">
               Locations
             </li>
-            <li className="">
+            </Link>
+            <Link href="/menu">
+            <li className="hover:text-black">
               Contact
             </li>
+            </Link>
           </ul>
         </nav>
    

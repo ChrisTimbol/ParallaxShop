@@ -1,16 +1,21 @@
 import './globals.css'
 import { Cinzel } from 'next/font/google'
 
-const cinzel = Cinzel({
-  subsets: ['latin'],
-  display: 'swap',
-  next: '700'
-})
+const cinzel = Cinzel(
+  {
+    style: 'normal',
+    subsets: ['latin'],
+    display: 'swap',
+    weight: ['400', '800'],
+  },
+)
+
+
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={cinzel.className}>
-      <body>
+      <body className="">
         {children}
       </body>
     </html>

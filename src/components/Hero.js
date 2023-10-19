@@ -17,13 +17,13 @@ export const Hero = () => {
                         />
                     </div>
                     <div className="h-full flex flex-col justify-center items-center p-8 space-y-4">
-                        <h2 className="text-4xl text-center font-semibold mb-2">California Burrito Shop</h2>
-                        <p className="text-center text-2xl">
+                        <h2 className="text-5xl text-center font-semibold  ">California Burrito Shop</h2>
+                        <p className="text-center font-serif text-2xl ">
                             Non sunt nostrud ipsum fugiat. Nulla ex ex officia
                             deserunt commodo pariatur ad cillum adipisicing proident
                             aliqua esse aliquip non.
                         </p>
-                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded mb-4">
+                        <button className="bg-green-500 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded mb-4">
                             Explore Menu
                         </button>
                     </div>
