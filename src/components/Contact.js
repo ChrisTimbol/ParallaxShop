@@ -1,15 +1,17 @@
+import Image from 'next/image'
 
 export const Contact = () => {
     return (
-        <>
-            <section className="Contact h-screen bg-black flex  text-white">
-                <div className="text-3xl font-bold p-4">Contact Us</div>
-                <div className="ContactInfo p-4">
-                    <p>Email: info@example.com</p>
-                    <p>Phone: +1 (123) 456-7890</p>
-                    <p>Visit us at: 123 Main St, Cityville, Country</p>
-                </div>
-            </section>
-        </>
-    )
-}
+        <section className="Contact min-h-screen   flex flex-col items-center justify-center space-y-8">
+            <div className="text-5xl font-bold text-green-500">Contact Us</div>
+            <div className="ContactInfo text-center text-3xl space-y-2">
+                <p>Email: <a href="mailto:info@example.com" className="text-amber-400 hover:text-amber-300">info@example.com</a></p>
+                <p>Phone: <a href="tel:+11234567890" className="text-amber-400 hover:text-amber-300">+1 (123) 456-7890</a></p>
+                <p>Visit us at: 123 Main St, Cityville, Country</p>
+            </div>
+            <div className="h-96 w-2/5 relative rounded-lg object-cover overflow-hidden">
+                <Image src="/Restaraunt.jpg" fill alt="Restaurant Image" />
+            </div>
+        </section>
+    );
+};

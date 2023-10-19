@@ -15,12 +15,12 @@ export const Story = () => {
                     </div>
 
                     <div className="h-96 relative  rounded-sm overflow-hidden">
-                        <Image src="/Corona.jpg" alt="Hero Image" className="rounded-sm" layout="fill" objectFit="cover" />
+                        <Image src="/Corona.jpg" alt="Hero Image" className="rounded-sm object-cover" fill  />
                     </div>
 
 
                     <div className="h-96 relative  rounded-sm overflow-hidden">
-                        <Image src="/BurritoBurger.jpg" alt="Hero Image" className="rounded-sm" layout="fill" objectFit="cover" />
+                        <Image src="/BurritoBurger.jpg" alt="Hero Image" className="rounded-sm object-cover" fill  />
                     </div>
                     <div className="flex  flex-col text-center  justify-center items-center">
                         <p className="font-sans text-sm">decoration text</p>
