@@ -3,7 +3,7 @@ export const Menu = () => {
     return (
         <>
 <section className="MenuContainer p-4 h-screen bg-gray-100 flex flex-col items-center">
-    <div className="text-6xl font-bold mb-8 text-green-700">Our Menu</div>
+    <div className="text-4xl font-bold mb-8 text-black">Our Menu</div>
     <div className="MenuCategories flex w-full justify-around max-w-3xl mb-6">
         <div className="MenuItemCategory">Tacos</div>
         <div className="MenuItemCategory">Burritos</div>

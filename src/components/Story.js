@@ -1,49 +1,46 @@
-import Image from 'next/image'
+import Image from 'next/image';
 
 export const Story = () => {
     return (
-        <>
-            <section className="About  flex items-center justify-center w-full ">
-
-                <div className="grid grid-cols-3   ">
-
-                    <div className="flex flex-col text-center justify-center items-center">
-                        <p className="font-sans text-sm">decoration text</p>
-                        <h2>Our Story</h2>
-                        <p className="text-lg p-4">Experience the richness of Mexican culinary traditions at our restaurant. We source the finest ingredients to create mouthwatering dishes.</p>
-                        <p className="text-lg p-4">Experience the richness of Mexican</p>
-                    </div>
-
-                    <div className="h-96 relative  rounded-sm overflow-hidden">
-                        <Image src="/Corona.jpg" alt="Hero Image" className="rounded-sm object-cover" fill />
-                    </div>
-
-                    <div className="flex flex-col text-center justify-center items-center">
-                        <p className="font-sans text-sm">decoration text</p>
-                        <h2>Our Story</h2>
-                        <p className="text-lg p-4">Experience the richness of Mexican culinary traditions at our restaurant. We source the finest ingredients to create mouthwatering dishes.</p>
-                        <p className="text-lg p-4">Experience the richness of Mexican</p>
-                    </div>
-
-
-
-                    <div className="h-96 relative  rounded-sm overflow-hidden">
-                        <Image src="/BurritoBurger.jpg" alt="Hero Image" className="rounded-sm object-cover" fill />
-                    </div>
-                    <div className="flex  flex-col text-center  justify-center items-center">
-                        <p className="font-sans text-sm">decoration text</p>
-                        <h2>Our Story</h2>
-                        <p className="text-lg p-4">Experience the richness of Mexican culinary traditions at our restaurant. We source the finest ingredients to create mouthwatering dishes.</p>
-                        <p className="text-lg p-4">Experience the richness of Mexican</p>
-                    </div>
-                    <div className="h-96 relative  rounded-sm overflow-hidden">
-                        <Image src="/Burrito2.jpg" alt="Hero Image" className="rounded-sm object-cover" fill />
-                    </div>
-
-
+        <section className="About flex flex-col bg-gray-100  items-center justify-center w-full p-8">
+            <h1 className="text-4xl font-bold mb-8">Our Story</h1>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-screen-xl mx-auto">
+                {/* First Story */}
+                <div className="story-card flex flex-col text-center justify-center items-center">
+                    <p className="font-sans text-sm mb-2">Decoration Text</p>
+                    <h2 className="text-xl font-bold mb-4">Experience Mexican Tradition</h2>
+                    <p className="text-lg mb-6">
+                        Experience the richness of Mexican culinary traditions at our restaurant. We source the finest ingredients to create mouthwatering dishes.
+                    </p>
+                </div>
+                <div className="h-80 relative border-4 overflow-hidden rounded-lg">
+                    <Image src="/Corona.jpg" alt="Hero Image" className="rounded-lg object-cover" layout="fill" />
                 </div>
 
-            </section>
-        </>
+                {/* Second Story */}
+                <div className="story-card flex flex-col text-center justify-center items-center">
+                    <p className="font-sans text-sm mb-2">Decoration Text</p>
+                    <h2 className="text-xl font-bold mb-4">Savor Every Bite</h2>
+                    <p className="text-lg mb-6">
+                        Experience the richness of Mexican culinary traditions at our restaurant. We source the finest ingredients to create mouthwatering dishes.
+                    </p>
+                </div>
+                <div className="h-80 relative rounded-lg overflow-hidden">
+                    <Image src="/BurritoBurger.jpg" alt="Hero Image" className="rounded-lg object-cover" layout="fill" />
+                </div>
+
+                {/* Third Story */}
+                <div className="story-card flex flex-col text-center justify-center items-center">
+                    <p className="font-sans text-sm mb-2">Decoration Text</p>
+                    <h2 className="text-xl font-bold mb-4">Authentic Flavors</h2>
+                    <p className="text-lg mb-6">
+                        Experience the richness of Mexican culinary traditions at our restaurant. We source the finest ingredients to create mouthwatering dishes.
+                    </p>
+                </div>
+                <div className="h-80 relative rounded-lg overflow-hidden">
+                    <Image src="/Burrito2.jpg" alt="Hero Image" className="rounded-lg object-cover" layout="fill" />
+                </div>
+            </div>
+        </section>
     );
 };

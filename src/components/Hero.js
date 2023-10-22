@@ -6,13 +6,13 @@ export const Hero = () => {
             <div className="carousel h-full w-full  text-black relative">
                 {/* Use next/image component for background image */}
                 <div className="h-full flex flex-col  text-white relative">
-                    <div className="absolute top-0 left-0 w-full h-full z-[-1]">
+                    <div className="h-screen absolute z-[-10] left-0 right-0 top-0 bottom-0 ">
                         <Image
                             src="/heroback.jpg"
                             alt="Background Image of burritoes"
                             fill
                             priority
-                            className="object-cover"
+                            className="object-cover "
                             quality={100}
                         />
                     </div>

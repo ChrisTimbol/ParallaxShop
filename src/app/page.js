@@ -4,11 +4,6 @@ import { Footer } from "@/components/Footer";
 export default function Home() {
 
   const containerHeight = 72; // Adjust this value based on your container height
-
-
-
-
-
   return (
     <>
 

@@ -23,7 +23,7 @@ export const Footer = () => {
                 </div>
                 {/* Newsletter Subscription Form */}
                 <div className="flex flex-col items-center">
-                    <p className="mb-2 text-lg">Subscribe for free tacos</p>
+                    <p className="mb-2 text-lg">Enter email for deals!</p>
                     <div className="flex items-center space-x-2">
                         <input
                             type="email"
