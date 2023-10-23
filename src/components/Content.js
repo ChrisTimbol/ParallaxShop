@@ -1,9 +1,8 @@
 import { Hero } from "./Hero";
-import { Story } from "./Story";
+import { Features } from "./Features";
 import { Specials } from "./Specials";
 import { Testimonials } from "./Testimonials";
 import { Menu } from './Menu';
-import { BannerSpecial } from "./BannerSpecial";
 import { Contact } from "./Contact";
 export const Content = () => {
     return (
@@ -11,7 +10,7 @@ export const Content = () => {
 
             <Hero />
 
-            <Story />
+            <Features />
             {/*             <div className="text-center border-2  border-cyan-500">Insert Image</div>
  */}
           

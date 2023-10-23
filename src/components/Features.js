@@ -1,9 +1,8 @@
 import Image from 'next/image';
 
-export const Story = () => {
+export const Features = () => {
     return (
         <section className="About flex flex-col bg-gray-100  items-center justify-center w-full p-8">
-            <h1 className="text-4xl font-bold mb-8">Our Story</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-screen-xl mx-auto">
                 {/* First Story */}
                 <div className="story-card flex flex-col text-center justify-center items-center">
@@ -14,7 +13,7 @@ export const Story = () => {
                     </p>
                 </div>
                 <div className="h-80 relative border-4 overflow-hidden rounded-lg">
-                    <Image src="/Corona.jpg" alt="Hero Image" className="rounded-lg object-cover" layout="fill" />
+                    <Image src="/Corona.jpg" alt="Hero Image" className="rounded-lg object-cover" fill/>
                 </div>
 
                 {/* Second Story */}
@@ -26,7 +25,7 @@ export const Story = () => {
                     </p>
                 </div>
                 <div className="h-80 relative rounded-lg overflow-hidden">
-                    <Image src="/BurritoBurger.jpg" alt="Hero Image" className="rounded-lg object-cover" layout="fill" />
+                    <Image src="/BurritoBurger.jpg" alt="Hero Image" className="rounded-lg object-cover" fill/>
                 </div>
 
                 {/* Third Story */}
@@ -38,7 +37,7 @@ export const Story = () => {
                     </p>
                 </div>
                 <div className="h-80 relative rounded-lg overflow-hidden">
-                    <Image src="/Burrito2.jpg" alt="Hero Image" className="rounded-lg object-cover" layout="fill" />
+                    <Image src="/Burrito2.jpg" alt="Hero Image" className="rounded-lg object-cover" fill />
                 </div>
             </div>
         </section>
