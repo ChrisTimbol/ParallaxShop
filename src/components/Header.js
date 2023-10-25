@@ -5,7 +5,6 @@ import React, { useState, useEffect } from 'react';
 
 export const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [fixedHeader, setFixedHeader] = useState(true);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -17,39 +16,43 @@ export const Header = () => {
   };
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 800) {
-        setFixedHeader(true);
-      } else {
-        setFixedHeader(false);
+    // Event listener to handle window resize
+    const handleResize = () => {
+      if (menuOpen && window.innerWidth >= 768) {
+        // Close the menu and remove overflow-hidden class when window size is larger than or equal to 768px
+        setMenuOpen(false);
+        document.body.classList.remove('overflow-hidden');
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [menuOpen]); // Re-run effect when menuOpen state changes
 
   return (
-    <>
-      <div className={`w-full ${fixedHeader ? 'h-16' : ''} placeholder`}></div>
-
-      <header className={`z-10 bg-stone-600 flex justify-between items-center w-full text-white m-0 px-4 ${fixedHeader ? 'fixed top-0' : 'static'}`}>
-    
-      <div className="logo-container z-50 md:pl-8 ">
+    <header className="z-10 fixed top-0 w-full text-lg  bg-stone-500 px-8 flex justify-center ">
+      <div className="max-w-screen-lg flex justify-between w-full">
+        <div className="logo-container">
           <Image
-            src="Logo.svg"
+            src="/Logo.svg"
             alt="Burrito Logo"
-            className={`transform rotate-90`}
+            className="transform rotate-90"
             width={64}
             height={64}
           />
         </div>
-
-        <div className="md:hidden z-50 text-black">
-          <button onClick={toggleMenu} className="text-white focus:outline-none">
+        <nav className={`md:flex items-center text-stone-200 font-semibold ${menuOpen ? 'flex flex-col absolute text-2xl inset-0 justify-around bg-stone-500 h-screen ' : 'hidden space-x-4 '}`}>
+          <Link href="/" className="hover:text-stone-50 ">Home</Link>
+          <Link href="/menu" className="hover:text-stone-50">Menu</Link>
+          <Link href="/locations" className="hover:text-stone-50">Locations</Link>
+          <Link href="/contact" className="hover:text-stone-50">Contact</Link>
+          <Link href="/about" className="hover:text-stone-50">About</Link>
+        </nav>
+        <div className="hamburger-container md:hidden z-50 flex justify-center items-center">
+          <button onClick={toggleMenu} className={`focus:outline-none   `}>
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               {menuOpen ? (
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -59,37 +62,7 @@ export const Header = () => {
             </svg>
           </button>
         </div>
-
-        <nav className={`fixed md:static z-20 inset-0 bg-stone-500 md:bg-transparent text-white text-2xl ${menuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
-          <ul className=" list-none flex flex-col items-center md:space-x-4 pt-20  text-2xl md:text-xl space-y-4 md:pt-0 md:space-y-0 md:flex-row ">
-            <li className="">
-              <Link href="/" className="hover:text-black">
-                Home
-              </Link>
-            </li>
-            <li className="">
-              <Link href="/menu" className="hover:text-black">
-                Menu
-              </Link>
-            </li>
-            <li className="">
-              <Link href="/locations" className="hover:text-black">
-                Locations
-              </Link>
-            </li>
-            <li className="">
-              <Link href="/contact" className="hover:text-black">
-                Contact
-              </Link>
-            </li>
-            <li>
-              <Link href="/about" className="hover:text-black">
-                About
-              </Link>
-            </li>
-          </ul>
-        </nav>
-      </header>
-    </>
+      </div>
+    </header>
   );
 };

@@ -1,7 +1,7 @@
 
 export const Footer = () => {
     return (
-        <footer className="bg-gray-900 text-white">
+        <footer className="bg-stone-500 text-white">
             <div className="container mx-auto py-8 flex flex-col items-center">
                 <div className="flex mb-4 space-x-4">
                     {/* Social Media Links */}
