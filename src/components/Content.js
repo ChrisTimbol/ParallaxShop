@@ -1,7 +1,6 @@
 import React from 'react';
 import { Hero } from "./Hero";
 import { Features } from "./Features";
-import { Specials } from "./Specials";
 import { Testimonials } from "./Testimonials";
 import { Contact } from "./Contact";
 import { About } from './About';
@@ -15,10 +14,10 @@ export const Content = () => {
           
 
 
-            {/* <Specials />
-      <Testimonials />
-      <Contact /> 
-      */}
+             <Specials />
+{/*       <Testimonials />
+      <Contact />  */}
+      
 
         </main>
     );
