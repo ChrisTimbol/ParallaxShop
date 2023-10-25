@@ -16,7 +16,10 @@ export default function Menu() {
         url: WooCommerceAPI,
         consumerKey: key,
         consumerSecret: secret,
-        version: 'wc/v3'
+        version: 'wc/v3',
+        axiosConfig: {/* Removes axios error problem */
+            headers: {}
+          }
     }); 
 
  useEffect(() => {
