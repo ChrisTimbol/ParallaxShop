@@ -4,6 +4,7 @@ import { Features } from "./Features";
 import { Testimonials } from "./Testimonials";
 import { Contact } from "./Contact";
 import { About } from './About';
+
 export const Content = () => {
     return (
         <main className="min-h-screen">
@@ -11,13 +12,10 @@ export const Content = () => {
             <Hero />
             <About />
             <Features />
-          
+        
+       {/*      <Testimonials />
+            <Contact /> */}
 
-
-             <Specials />
-{/*       <Testimonials />
-      <Contact />  */}
-      
 
         </main>
     );

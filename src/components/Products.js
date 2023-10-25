@@ -1,50 +1,13 @@
-'use client'
-import React, { useState, useEffect } from 'react';
-import WooCommerceRestApi from "@woocommerce/woocommerce-rest-api";
 
-export const Menu = () => {
-    const [products, setProducts] = useState([]);
-    const [categories, setCategories] = useState([]);
-    const [selectedCategory, setSelectedCategory] = useState(null);
-    const WooCommerceAPI = 'http://restarauntwoo.local'; // WooCommerce API base URL
-    const consumerkey = process.env.WC_CONSUMER_KEY;
-    const consumersecret = process.env.WC_CONSUMER_SECRET;
 
-    const WooCommerce = new WooCommerceRestApi({
-        url: WooCommerceAPI,
-        consumerKey: consumerkey,
-        consumerSecret: consumersecret,
-        version: 'wc/v3'
-    });
 
-    useEffect(() => {
-     
-        // Fetch products and categories from WooCommerce API
-        WooCommerce.get('products')
-            .then((productResponse) => {
-                setProducts(productResponse.data);
-            })
-            .catch((productError) => {
-                console.error('Error fetching products:', productError);
-            });
-
-        WooCommerce.get('products/categories')
-            .then((categoryResponse) => {
-                setCategories(categoryResponse.data);
-            })
-            .catch((categoryError) => {
-                console.error('Error fetching categories:', categoryError);
-            });
-    }, []); // Empty dependency array ensures the effect runs once after initial render
-
+export const Products = () => {
     const filterProductsByCategory = (categoryId) => {
         setSelectedCategory(categoryId);
     };
-
     const filteredProducts = selectedCategory
         ? products.filter(product => product.categories.some(cat => cat.id === selectedCategory))
         : products;
-
     return (
         <>
             <section className="MenuContainer p-4 min-h-screen bg-gray-100 flex flex-col items-center">
