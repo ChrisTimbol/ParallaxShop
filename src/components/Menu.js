@@ -1,42 +1,75 @@
+'use client'
+import React, { useState, useEffect } from 'react';
+import WooCommerceRestApi from "@woocommerce/woocommerce-rest-api";
 
 export const Menu = () => {
+    const [products, setProducts] = useState([]);
+    const [categories, setCategories] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState(null);
+    const WooCommerceAPI = 'http://restarauntwoo.local'; // WooCommerce API base URL
+    const consumerkey = process.env.WC_CONSUMER_KEY;
+    const consumersecret = process.env.WC_CONSUMER_SECRET;
+
+    const WooCommerce = new WooCommerceRestApi({
+        url: WooCommerceAPI,
+        consumerKey: consumerkey,
+        consumerSecret: consumersecret,
+        version: 'wc/v3'
+    });
+
+    useEffect(() => {
+     
+        // Fetch products and categories from WooCommerce API
+        WooCommerce.get('products')
+            .then((productResponse) => {
+                setProducts(productResponse.data);
+            })
+            .catch((productError) => {
+                console.error('Error fetching products:', productError);
+            });
+
+        WooCommerce.get('products/categories')
+            .then((categoryResponse) => {
+                setCategories(categoryResponse.data);
+            })
+            .catch((categoryError) => {
+                console.error('Error fetching categories:', categoryError);
+            });
+    }, []); // Empty dependency array ensures the effect runs once after initial render
+
+    const filterProductsByCategory = (categoryId) => {
+        setSelectedCategory(categoryId);
+    };
+
+    const filteredProducts = selectedCategory
+        ? products.filter(product => product.categories.some(cat => cat.id === selectedCategory))
+        : products;
+
     return (
         <>
-<section className="MenuContainer p-4 h-screen bg-gray-100 flex flex-col items-center">
-    <div className="text-4xl font-bold mb-8 text-black">Our Menu</div>
-    <div className="MenuCategories flex w-full justify-around max-w-3xl mb-6">
-        <div className="MenuItemCategory">Tacos</div>
-        <div className="MenuItemCategory">Burritos</div>
-        <div className="MenuItemCategory">Enchiladas</div>
-        <div className="MenuItemCategory">Quesadillas</div>
-        {/* Add more menu categories as needed */}
-    </div>
-    <div className="MenuItemsGrid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl">
-        {/* Example Menu Items */}
-        <div className="MenuItem p-6 bg-white rounded-lg shadow-md">
-            <h3 className="text-xl font-bold mb-2">Taco Supreme</h3>
-            <p className="text-gray-600">Delicious seasoned beef, lettuce, cheese, and tomatoes wrapped in a warm tortilla.</p>
-            <span className="text-green-500 mt-2">$5.99</span>
-        </div>
-        <div className="MenuItem p-6 bg-white rounded-lg shadow-md">
-            <h3 className="text-xl font-bold mb-2">Burrito Grande</h3>
-            <p className="text-gray-600">A hearty burrito filled with rice, beans, grilled chicken, cheese, and salsa.</p>
-            <span className="text-green-500 mt-2">$7.99</span>
-        </div>
-        <div className="MenuItem p-6 bg-white rounded-lg shadow-md">
-            <h3 className="text-xl font-bold mb-2">Enchilada Platter</h3>
-            <p className="text-gray-600">Two enchiladas served with Spanish rice and refried beans.</p>
-            <span className="text-green-500 mt-2">$6.49</span>
-        </div>
-        <div className="MenuItem p-6 bg-white rounded-lg shadow-md">
-            <h3 className="text-xl font-bold mb-2">Cheese Quesadilla</h3>
-            <p className="text-gray-600">Melted cheese inside a crispy tortilla, served with guacamole and sour cream.</p>
-            <span className="text-green-500 mt-2">$4.99</span>
-        </div>
-        {/* Add more menu items within each category */}
-    </div>
-</section>
+            <section className="MenuContainer p-4 min-h-screen bg-gray-100 flex flex-col items-center">
+                <div className="text-4xl font-bold mb-8 text-black">Our Menu</div>
+                <div className="MenuCategories flex w-full justify-around max-w-3xl mb-6">
+                    {categories.map((category) => (
+                        <div
+                            key={category.id}
+                            className={`MenuItemCategory  cursor-pointer ${selectedCategory === category.id ? 'text-blue-500' : ''}`}
+                            onClick={() => filterProductsByCategory(category.id)}
+                        >
+                            {category.name}
+                        </div>
+                    ))}
+                </div>
+                <div className="MenuItemsGrid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl">
+                    {filteredProducts.map((product) => (
+                        <div key={product.id} className="MenuItem p-6 bg-white rounded-lg shadow-md">
+                            <h3 className="text-xl font-bold mb-2">{product.name}</h3>
+                            <div dangerouslySetInnerHTML={{ __html: product.description }} />
+                            <span className="text-green-500 mt-2">${product.price}</span>
+                        </div>
+                    ))}
+                </div>
+            </section>
         </>
-
-    )
-}
+    );
+};
