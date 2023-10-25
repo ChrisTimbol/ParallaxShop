@@ -7,7 +7,7 @@ const Contact = () => {
       <div className="text-5xl font-bold">Contact Us</div>
 
       <div className="h-[50vh] w-2/5 relative rounded-lg object-cover overflow-hidden">
-        <Image src="/Restaurant.jpg" layout="fill" objectFit="cover" alt="Restaurant Image" />
+        <Image src="/Burrito.svg" fill alt="Restaurant Image" />
       </div>
 
       <div className="ContactInfo text-center text-3xl space-y-2">

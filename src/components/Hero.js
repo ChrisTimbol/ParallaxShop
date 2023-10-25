@@ -2,31 +2,25 @@ import Image from 'next/image'
 
 export const Hero = () => {
     return (
-        <section className="Hero h-screen flex text-white relative">
-            <div className="carousel h-full w-full  text-black relative">
+        <section className="Hero h-screen flex relative">
+            <div className="carousel h-full w-full relative">
                 {/* Use next/image component for background image */}
-                <div className="h-full flex flex-col  text-white relative">
-                    <div className="h-screen absolute z-[-10] left-0 right-0 top-0 bottom-0 ">
-                        <Image
-                            src="/heroback.jpg"
-                            alt="Background Image of burritoes"
-                            fill
-                            priority
-                            className="object-cover "
-                            quality={100}
-                        />
-                    </div>
-                    <div className="h-full flex flex-col justify-center items-center p-8 space-y-4">
-                        <h2 className="text-5xl text-center font-semibold  ">California Burrito Shop</h2>
-                        <p className="text-center font-serif text-2xl ">
+
+                <div className="h-3/5 bg-cover bg-[url('/heroback.jpg')] ">
+          
+                <div className="flex items-center h-full p-4">
+                    <div className="  w-full lg:w-1/3 lg:ml-64 p-4 bg-stone-900/95  text-white">
+                        <h1 className="text-4xl font-bold">California <br/> Burrito Shop</h1>
+                        <p className=" font-serif text-lg mb-4 ">
                             Non sunt nostrud ipsum fugiat. Nulla ex ex officia
                             deserunt commodo pariatur ad cillum adipisicing proident
                             aliqua esse aliquip non.
                         </p>
-                        <button className="bg-green-500 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded mb-4">
+                        <button className="bg-white  border-2 border-transparent hover:border-white hover:bg-stone-900 hover:text-white text-black text-xl font-semibold p-2 rounded-full mb-4 transition duration-300 ease-in-out">
                             Explore Menu
                         </button>
                     </div>
+                </div>
                 </div>
             </div>
         </section>

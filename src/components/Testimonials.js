@@ -31,7 +31,7 @@ export const Testimonials = () => {
     return (
         <section className="Testimonials min-h-min items-center flex flex-col space-y-4 p-8 bg-gradient-to-r from-green-700 to-green-900 text-white">
             <h2 className="text-3xl font-bold text-center mb-8">Customer Reviews</h2>
-            <div className="flex justify-center space-x-6">
+            <div className="flex flex-wrap justify-center space-y-4 md:space-x-6">
                 {testimonials.map((testimonial, index) => (
                     <div key={index} className="flex flex-col items-center bg-white p-8 rounded-lg shadow-lg text-gray-800 max-w-md">
                         <div className="flex items-center mb-4">
