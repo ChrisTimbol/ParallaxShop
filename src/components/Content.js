@@ -4,15 +4,15 @@ import { Features } from "./Features";
 import { Specials } from "./Specials";
 import { Testimonials } from "./Testimonials";
 import { Contact } from "./Contact";
-
+import { About } from './About';
 export const Content = () => {
     return (
         <main className="min-h-screen">
 
             <Hero />
-
+            <About />
             <Features />
-
+          
 
 
             {/* <Specials />
