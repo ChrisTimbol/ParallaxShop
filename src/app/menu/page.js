@@ -65,19 +65,25 @@ export default function Menu() {
                         </div>
                     ))}
                 </div>
-                <div className="MenuItemsGrid grid grid-cols-1 sm:grid-cols-2  gap-8 max-w-5xl">
+                <div className="MenuItemsGrid grid grid-cols-1 sm:grid-cols-2  gap-4 lg:gap-8 max-w-5xl">
                     {filteredProducts.map((product) => (
-                        <div key={product.id} className="MenuItem p-4 flex  items-center bg-white rounded-lg shadow-md">
-                            <div className="relative h-24 w-48 ">
+                        <div key={product.id} className="MenuItem flex  items-center bg-white rounded-lg shadow-md">
+                            <div className="relative h-36 w-48 ">
                                 {/* Display the first image of the product, assuming images array is not empty */}
                                 {product.images.length > 0 && (
-                                    <Image src={product.images[0].src} alt={product.name} fill className=" object-center"/>
+                                    <Image
+                                        src={product.images[0].src}
+                                        alt={product.name}
+                                        fill
+                                        priority
+                                        className=" p-4 	"
+                                    />
                                 )}
                             </div>
-                            <div className="p-4">
-                                <h3 className="text-2xl font-semibold mb-2">{product.name}</h3>
-                                <div className="" dangerouslySetInnerHTML={{ __html: product.description }} />
-                                <span className="text-green-500 font-semibold text-sm">${product.price}</span>
+                            <div className="px-4">
+                                <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
+                                <div className="text-sm " dangerouslySetInnerHTML={{ __html: product.description }} />
+                                <span className="text-green-500  font-sans font-semibold text-sm">${product.price}</span>
                             </div>
                         </div>
                     ))}
