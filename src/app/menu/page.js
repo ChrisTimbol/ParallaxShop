@@ -22,6 +22,21 @@ export default function Menu() {
         }
     });
 
+    const addToCart = (productId) => {
+        WooCommerce.post(`cart/add`, {
+            product_id: productId,
+            quantity: 1
+        })
+            .then((response) => {
+                console.log("product added to cart:", response.data)
+
+            })
+            .catch((error) => {
+                console.error("error adding product to cart:", error)
+            })
+    }
+
+
     useEffect(() => {
 
         // Fetch products and categories from WooCommerce API
@@ -80,10 +95,19 @@ export default function Menu() {
                                     />
                                 )}
                             </div>
+
                             <div className="px-4">
                                 <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
                                 <div className="text-sm " dangerouslySetInnerHTML={{ __html: product.description }} />
-                                <span className="text-green-500  font-sans font-semibold text-sm">${product.price}</span>
+                                <div className="flex w-full items-center justify-between">
+                                    <div className="text-green-500  font-sans font-semibold text-sm">${product.price}</div>
+                                    <button
+                                        className="bg-stone-500 text-white px-4 py-2 rounded hover:bg-stone-700 cursor-pointer"
+                                        onClick={() => addToCart(product.id)}
+                                    >
+                                        Add to Cart
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     ))}
