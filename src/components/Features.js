@@ -13,7 +13,7 @@ export const Features = () => {
                     </p>
                 </div>
                 <div className="h-80 relative border-4 overflow-hidden rounded-lg">
-                    <Image src="/Corona.jpg" alt="Hero Image" className="rounded-lg object-cover" fill/>
+                    <Image src="/Corona.jpg" alt="Hero Image"   sizes={50} className="rounded-lg object-cover" fill/>
                 </div>
 
                 {/* Second Story */}
@@ -25,7 +25,7 @@ export const Features = () => {
                     </p>
                 </div>
                 <div className="h-80 relative rounded-lg overflow-hidden">
-                    <Image src="/BurritoBurger.jpg" alt="Hero Image" className="rounded-lg object-cover" fill/>
+                    <Image src="/BurritoBurger.jpg" alt="Hero Image"   sizes={50} className="rounded-lg object-cover" fill/>
                 </div>
 
                 {/* Third Story */}
@@ -37,7 +37,7 @@ export const Features = () => {
                     </p>
                 </div>
                 <div className="h-80 relative rounded-lg overflow-hidden">
-                    <Image src="/Burrito2.jpg" alt="Hero Image" className="rounded-lg object-cover" fill />
+                    <Image src="/Burrito2.jpg" alt="Hero Image"   sizes={50} className="rounded-lg object-cover" fill />
                 </div>
             </div>
         </section>

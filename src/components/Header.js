@@ -2,12 +2,35 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
-import WooCommerceRestApi from "@woocommerce/woocommerce-rest-api";
-
 
 export const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const logoSize = window.innerWidth >= 768 ? 64 : 32;
+  const [cartCount, setCartCount] = useState(0);
+  const [nonce, setNonce] = useState('');
+
+  useEffect(() => {
+    const fetchCartData = async () => {
+      try {
+        const response = await fetch('http://restarauntwoo.local/wp-json/wc/store/cart')
+    
+        if (response.ok) {
+          const data = await response.json();
+          setCartCount(data.items_count);
+          const nonceHeader = response.headers.get('Nonce');
+          setNonce(nonceHeader)
+
+        } else {
+          console.error('Failed to fetch cart data');
+        }
+      } catch (error) {
+        console.error('Error fetching cart data:', error);
+      }
+    };
+
+    fetchCartData();
+  }, []);
+
+
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -17,12 +40,12 @@ export const Header = () => {
       document.body.classList.remove('overflow-hidden'); // Remove the overflow-hidden class
     }
   };
-
   const closeMenu = () => {
     setMenuOpen(false);
     document.body.classList.remove('overflow-hidden');
   };
   useEffect(() => {
+
     // Event listener to handle window resize
     const handleResize = () => {
       if (menuOpen && window.innerWidth >= 768) {
@@ -38,7 +61,6 @@ export const Header = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, [menuOpen]); // Re-run effect when menuOpen state changes
-
   return (
     <header className="z-10 fixed top-0 w-screen text-lg  bg-stone-500 px-8 flex justify-center ">
       <div className="max-w-screen-lg flex justify-between w-full">
@@ -47,16 +69,21 @@ export const Header = () => {
             src="/Logo.svg"
             alt="Burrito Logo"
             className="transform rotate-90"
-            width={logoSize}
-            height={logoSize}
+            width={64}
+            height={64}
+            sizes={50}
           />
         </div>
+        <p className="text-white flex justify-center items-center font-semibold">Nonce: {nonce}</p>
+
+
         <nav className={`md:flex items-center text-stone-200 font-semibold ${menuOpen ? 'flex flex-col absolute text-2xl inset-0 justify-around bg-stone-500 h-screen ' : 'hidden space-x-4 '}`}>
           <Link href="/" className="hover:text-stone-50 " onClick={closeMenu}>Home</Link>
           <Link href="/menu" className="hover:text-stone-50" onClick={closeMenu}>Menu</Link>
           <Link href="/locations" className="hover:text-stone-50" onClick={closeMenu}>Locations</Link>
           <Link href="/contact" className="hover:text-stone-50" onClick={closeMenu}>Contact</Link>
           <Link href="/about" className="hover:text-stone-50" onClick={closeMenu}>About</Link>
+          <Link href="/cart" className="hover:text-stone-50" onClick={closeMenu}>Cart {cartCount}</Link>
         </nav>
         <div className="hamburger-container md:hidden z-50 flex justify-center items-center">
           <button onClick={toggleMenu} className={`focus:outline-none   `}>
@@ -70,6 +97,7 @@ export const Header = () => {
           </button>
         </div>
       </div>
+
     </header>
   );
 };
