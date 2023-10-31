@@ -11,28 +11,18 @@ const cinzel = Cinzel(
     weight: ['400', '800'],
   },
 )
-/* 
-async function GetData() {
-  const res = await fetch('http://restarauntwoo.local/wp-json/wc/store/cart');
 
-  if (!res.ok) {
-    throw new Error('Failed to fetch data');
-  }
-
-  const nonceHeader = headers.get('Nonce');
-
-  console.log('Nonce:', nonceHeader);
-  return nonceHeader;
-}
- */
-export default function RootLayout({ children }) {
-
+export default async function RootLayout({ children }) {
+  /* Fetch nonce for cart */
+  const res = await fetch('http://restarauntwoo.local/wp-json/wc/store/v1/cart');
+  const nonce = res.headers.get('Nonce');
+  const cartData = await res.json()
+  const cartCount = cartData.item_count || 'None'
   return (
     <html lang="en" className={cinzel.className}>
-
       <body className="">
+        <Header nonce={nonce} cartCount={cartCount}/>
 
-        <Header  />
         {children}
         <Footer />
       </body>

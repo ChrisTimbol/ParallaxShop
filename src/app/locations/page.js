@@ -16,7 +16,7 @@ const Locations = () => {
       phone: '+1 (234) 567-8901',
       hours: 'Mon - Sat: 10:00 AM - 10:00 PM, Sun: 11:00 AM - 9:00 PM'
     },
-    // Add more locations if necessary
+
   ];
 
   return (
