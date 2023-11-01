@@ -8,7 +8,7 @@ import { About } from './About';
 export const Content = () => {
     return (
         <main className="min-h-screen">
-
+    
             <Hero />
             <About />
             <Features />
