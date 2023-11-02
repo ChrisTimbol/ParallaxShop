@@ -1,20 +1,22 @@
 import React, { useContext } from 'react';
 
 function AddToCartButton({ productId, nonce }) {
+    const { updateCartCount } = useCart();
 
     const addToCart = async (productId, quantity) => {
         try {
-            const response = await fetch(`http://restarauntwoo.local/wp-json/wc/store/v1/cart/add-item?id=${productId}&quantity=${quantity}`, {
+            const response = await fetch(`http://restarauntwoo.local/wp-json/wc/store/v1/cart/items?id=${productId}&quantity=${quantity}`, {
                 method: 'POST',
                 headers: {
-                 'nonce': nonce
+                    'nonce': nonce
                 }
             });
 
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-
+            
+            updateCartCount();
             const cartResponse = await response.json();
             console.log('Item added to cart:', cartResponse);
 
@@ -28,7 +30,7 @@ function AddToCartButton({ productId, nonce }) {
             className="bg-stone-500 text-white px-4 py-2 rounded hover:bg-stone-700 cursor-pointer"
             onClick={() => addToCart(productId, 1)}
         >
-            Add to Cart {nonce}
+            Add to Cart
         </button>
     );
 }
