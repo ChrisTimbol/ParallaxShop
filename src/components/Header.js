@@ -21,8 +21,6 @@ export const Header = ({ nonce }) => {
           />
         </div>
 
-        <p className="text-white flex justify-center items-center font-semibold">Nonce: {nonce} </p>
-
         {/* 
         <nav className={`md:flex items-center text-stone-200 font-semibold 'flex flex-col absolute text-2xl inset-0 justify-around bg-stone-500 h-screen ' : 'hidden space-x-4 '}`}>
         */}

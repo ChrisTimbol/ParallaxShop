@@ -13,18 +13,17 @@ const cinzel = Cinzel(
   },
 )
 
-export default async function RootLayout( props ) {
+export default async function RootLayout({children}) {
 
   /* Nonce must be fetched on server component */
   const res = await fetch('http://restarauntwoo.local/wp-json/wc/store/v1/cart')
   const fetchedNonce = res.headers.get('Nonce') 
-  console.log(props)
   return (
     <html lang="en" className={cinzel.className}>
       <body className="" >
         <CartProvider>
           <Header nonce={fetchedNonce} />
-          {props.children}
+          {children}
           <Footer />
         </CartProvider>
       </body>
