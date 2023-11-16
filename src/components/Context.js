@@ -4,7 +4,7 @@ import React, { createContext, useState, useEffect } from 'react';
 export const CartContext = createContext('') // create the context to share
 
 export default function Context({ children }) {
-    const [cartCount, setCartCount] = useState()
+    const [cartCount, setCartCount] = useState(0)
 
     useEffect(() => {
 
@@ -30,7 +30,7 @@ export default function Context({ children }) {
         // Initialize cart count on component mount
         initializeCartCount();
         
-  /*       localStorage.clear(); */
+      /* localStorage.clear();  */
 
     }, []);
 
