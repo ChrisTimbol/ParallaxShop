@@ -12,10 +12,7 @@ export default function Home({ nonce }) {
       <Hero />
       <About />
       <Features />
-    {/*      
-      <Testimonials />
-      <Contact /> 
-    */}
+
     </main>
   );
 

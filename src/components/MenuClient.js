@@ -75,7 +75,7 @@ function MenuClient({ nonce }) {
                                 <div className="text-green-500  font-sans font-semibold text-sm">
                                     {formatPrice(product.prices.price, product.prices.currency_minor_unit)}
                                 </div>
-                        
+
                                 <AddToCartButton productId={product.id} nonce={nonce} />
 
                             </div>

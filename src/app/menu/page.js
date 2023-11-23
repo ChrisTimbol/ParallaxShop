@@ -9,6 +9,7 @@ export default async function Menu() {
         const products = await fetch('http://restarauntwoo.local/wp-json/wc/store/v1/products')
         const categories = await fetch('http://restarauntwoo.local/wp-json/wc/store/v1/products/categories')     
     */
+
     return (
         <>
             <div className="py-32"></div>

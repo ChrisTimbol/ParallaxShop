@@ -13,6 +13,7 @@ const cinzel = Cinzel(
   },
 )
 
+
 export default async function RootLayout({children}) {
 
   /* Nonce must be fetched on server component */
@@ -23,6 +24,7 @@ export default async function RootLayout({children}) {
       <body className="" >
         <CartProvider>
           <Header nonce={fetchedNonce} />
+          
           {children}
           <Footer />
         </CartProvider>
